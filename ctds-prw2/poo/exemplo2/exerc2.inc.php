@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 
  class Curso 
@@ -33,6 +33,12 @@
 
    return $mensagem;
   }
+
+    //método getter para mostrar o nome do curso
+    function mostrarNome()
+    {
+     return $this->nome;
+    }
  } 
 
 

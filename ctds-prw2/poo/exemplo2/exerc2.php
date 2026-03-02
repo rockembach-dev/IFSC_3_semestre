@@ -8,18 +8,27 @@
 </head>
 
  <body>
-  <h1> Fundamentos do PHP com POO - exemplo 1 </h1>
+  <h1> Fundamentos do PHP com POO - exemplo 2 </h1>
 
   <?php 
    require "exerc2.inc.php";
 
-  $objCurso1 = new Curso("Desenvolvimento de Sisteams", 40);
+  $objCurso1 = new Curso("Desenvolvimento de Sisteams", 4);
   $objCurso2 = new Curso("Enfermagem", 2);
 
-  //Mostrando informações do 1°Curso
+  //Utilizar os métodos que recuperam o nome de cda curso e sua classificação
 
-  echo "<p> Duração do 1°Curso : ", $objCurso1->duracao,"hrs </p>";
-  echo "<p> Nome do 1° Curso : ", $objCurso1->nome,"</p>";
+  $class1 = $objCurso1->classificarCurso();
+  $class2 = $objCurso2->classificarCurso();
+
+  $nome1 = $objCurso1->mostrarNome();
+  $nome2 = $objCurso2->mostrarNome();
+
+  echo "<p> Nome do 1° Curso : $nome1 </p>
+          Duração do 1°Curso : $class1 </p> <br>
+          Nome do 2° Curso : $nome2 </p> 
+          Duração do 2° Curso :  </p>";
+
 
  
 
