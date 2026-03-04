@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)https://moodle.ifsc.edu.br/pluginfile.php/64035/mod_book/chapter/6069/atividade.html -->
+<html lang="pt-BR">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Curso Técnico em Desenvolvimento de Sistemas - IFSC</title>
+</head>
+
+<body>
+  <header>
+    <h1>Curso Técnico em Desenvolvimento de Sistemas</h1>
+    <p>IFSC - Campus Florianópolis</p>
+  </header>
+  <h2> Fórum de Duvidas </h2>
+  <p> Coloque sua duvida abaixo!!</p>
+  <h2>Envie a sua duvida através do formulário</h2>
+
+  <div id="forum"></div>
+
+
+  <form id="interestForm" action="/enviar" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required="">
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required="">
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem ou perguntas sobre o
+curso."></textarea>
+    <input type="submit" value="Enviar Interesse">
+  </form>
+
+
+  <!-- Elemento para exibir a mensagem de agradecimento -->
+  <div id="thankYouMessage">
+    <h3>Obrigado pelo seu interesse!</h3>
+    <p>Recebemos sua mensagem e entraremos em contato em breve.</p>
+  </div>
+  <h2>Venha estudar conosco!</h2>
+  <p>Para mais informações, visite nosso site oficial:</p>
+  <p><a href="https://www.ifsc.edu.br/florianopolis" target="_blank">Acesse o site do IFSC - Campus Florianópolis</a>
+  </p>
+  <img class="course-image" src="./Curso Técnico em Desenvolvimento de Sistemas - IFSC_files/layout_set_logo"
+    alt="Imagem de promoção do curso no IFSC" style="max-width: 100%;
+height: auto;">
+  <footer>
+    <p>© 2024 IFSC - Instituto Federal de Santa Catarina. Todos os
+      direitos reservados.</p>
+  </footer>
+  <!-- Script JavaScript para manipulação do DOM -->
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>

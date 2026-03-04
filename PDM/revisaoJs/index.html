@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset='utf-8'>
+ <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+ <title>Page Title</title>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+  <h1 id="tit">Título</h1>
+   <p class="paragrafo">1 - orem ipsum dolor, sit amet consectetur adipisicing elit. At, quae reiciendis! <strong>Nam aut suscipit maxime aliquid ipsum dolores consectetur debitis</strong> quas vero, molestiae quibusdam soluta eos quidem assumenda natus. Quos.</p>
+   <p class="paragrafo">2 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam iusto cumque<i> ex excepturi debitis placeat similique omnis magnam non. Placeat rerum</i> reprehenderit quibusdam commodi quasi dicta consectetur temporibus earum cupiditate!</p>
+   <p class="paragrafo">3 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem a harum <a href="#">omnis saepe. Dicta doloremque quae consectetur similique </a> nihil, necessitatibus iusto voluptatem excepturi eligendi deleniti exercitationem recusandae, debitis tempore.</p>
+
+   <textarea id="saida">..</textarea>
+ 
+
+  <script>
+   let t1 = document.getElementById("tit")
+   let saida = document.getElementById("saida")
+
+   saida.innerHTML = "Conteúdo dos elementos: \n"
+   saida.innerHTML += t1.innerText
+
+    saida.innerHTML += "\n\nAcesso por indice do Vetor \n\n"
+   let ps = document.getElementsByClassName("paragrafo")
+   saida.innerHTML += ps[0].innerHTML + "\n\n"
+   saida.innerHTML += ps[1].innerHTML + "\n\n"
+   saida.innerHTML += ps[2].innerHTML + "\n\n"
+
+
+   let pc = document.querySelectorAll(".paragrafo")
+   saida.innerHTML += "\n\nAcesso por forEach \n\n"
+   pc.forEach(element => {
+    saida.innerHTML += element.innerHTML + "\n\n"
+   });
+
+   ps[3].innerHTML = ps[0].innerHTML + "<h2> FIM </h2>"
+
+   let link = document.getElementsByTagName("a")[0]
+   link.setAttribute("href", "https://ifsc.edu.br")
+  </script>
+</body>
+</html>
