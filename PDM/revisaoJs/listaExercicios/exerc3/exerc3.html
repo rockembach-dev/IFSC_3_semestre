@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset='utf-8'>
+ <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+ <title> Alterar Cor De Fundo da Página </title>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+ <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+ <script src='main.js'></script>
+</head>
+<body>
+  
+
+  <button id="verde">verde</button>
+  <button id="azul"> azul </button>
+  <button id="vermelho"> vermelho</button>
+  
+ <script>
+  document.getElementById("verde").addEventListener("click", verde)
+  document.getElementById("azul").addEventListener("click", azul)
+  document.getElementById("vermelho").addEventListener("click", vermelho)
+
+  function verde(){
+   document.body.style.backgroundColor = "green"
+  }
+  function azul(){
+   document.body.style.backgroundColor = "blue"
+  }
+  function vermelho(){
+   document.body.style.backgroundColor = "red"
+  }
+
+  
+
+ </script>
+</body>
+</html>
