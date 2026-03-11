@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset='utf-8'>
+ <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+ <title> Validação de Formulário </title>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+ <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+ <style>
+  .msg{
+   display: none;
+   color: red;
+  }
+ </style>
+</head>
+<body>
+  
+  
+   <fieldset>
+      <label for="nome"> Nome :</label>
+      <input type="text" id="nome">
+      <div id="erroNome" class="msg"> Nome é obrigatório!</div>
+      <label for="email"> E-mail :</label>
+      <input type="text" id="email">
+      <div id="erroEmail" class="msg"> E-mail é obrigatório!</div>
+
+      <button onclick="validar()"> Enviar </button>
+   </fieldset>
+  
+ 
+ <script src='ex7.js'></script>
+</body>
+</html>
