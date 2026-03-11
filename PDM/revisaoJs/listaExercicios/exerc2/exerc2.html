@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset='utf-8'>
+ <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+ <title> Exerc 2 </title>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+ <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+ <script src='main.js'></script>
+ <script>
+   
+ </script>
+</head>
+<body>
+  <h1> Mostrar e Ocultar um parágrafo </h1>
+
+   <p id="parag"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis assumenda fugit excepturi, consequatur quidem sint beatae? Ullam aut at tempore modi molestiae veniam. Quibusdam beatae suscipit tempora dolores saepe voluptate. </p>
+
+   
+   <button id="b1"> Mostrar </button>
+   <button id="b2"> Ocultar </button>
+  
+ <script>
+   document.getElementById("b1").addEventListener("click", mostrar)
+   document.getElementById("b2").addEventListener("click", ocultar)
+ 
+    function mostrar(){
+     let parag = document.getElementById("parag")
+     parag.style.display = "block"
+    }
+
+    function ocultar(){
+     let parag = document.getElementById("parag")
+     parag.style.display = "none"
+    }
+ </script>  
+</body>
+</html>
