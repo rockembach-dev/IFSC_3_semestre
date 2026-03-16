@@ -17,7 +17,7 @@ h1{
 fieldset {
  border-radius: 20px;
  background-color: lightcyan;
- width: 50%;
+ width: 70%;
  margin: 30px auto;
  padding-left: 40px;
  box-shadow: 5px 5px 5px 2px rgb(118, 189, 237);
@@ -27,11 +27,11 @@ input[type="text"], input[type=number] {
  margin-bottom: 10px;
 }
 
-input[name="titulo"], input[name="autor"]{
+input[name="aluno"], input[name="autor"]{
  width: 250px;
 }
 
-input[name="isbn"], input[name="preco"], input[name=desconto]{
+input[name="media"], input[name="matricula"], input[name=desconto]{
  width: 100px;
 }
 
@@ -40,8 +40,6 @@ button {
  font-weight: bold;
  font-size: 18px;
  font-family: Oswald;
- display: block;
- margin: auto;
 }
 
 p {
