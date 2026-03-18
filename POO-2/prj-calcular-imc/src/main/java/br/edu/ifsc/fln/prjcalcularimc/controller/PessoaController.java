@@ -68,7 +68,6 @@ public class PessoaController implements Initializable {
 
         );
 
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Resultado");
         alert.setHeaderText("Resultado Calculo IMC");
