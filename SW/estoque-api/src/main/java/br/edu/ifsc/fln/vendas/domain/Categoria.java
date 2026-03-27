@@ -1,31 +1,29 @@
 package br.edu.ifsc.fln.vendas.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String descricao;
+
+    @OneToMany
+    @JsonIgnore
+    private List<Produto> produtos;
 
     public Categoria() {}
 
-    public Categoria(int id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,15 +35,23 @@ public class Categoria {
         this.descricao = descricao;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Categoria categoria = (Categoria) o;
-        return getId() == categoria.getId();
+        return Objects.equals(getId(), categoria.getId()) && Objects.equals(getDescricao(), categoria.getDescricao());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hash(getId(), getDescricao());
     }
 }
