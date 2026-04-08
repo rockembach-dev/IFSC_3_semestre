@@ -41,7 +41,12 @@
    //visualizando o conteúdo de $objBanco
    //var_dump($objBanco);
    $conexao = $objBanco->criarConexao();
-   echo"<p> Conexão do PHP com o MySQL efetuada com sucesso! </p>";
+
+   $objBanco->criarBanco($conexao);
+
+   $objBanco->abrirBanco($conexao);
+
+   $objBanco->definirCharset($conexao);
 
    //Vamos fazer o PHP descobrir qual botão do formulário foi clicado
     if(isset($_POST["cadastrar"]))
