@@ -4,7 +4,6 @@ import br.edu.ifsc.fln.vendas.domain.Produto;
 import br.edu.ifsc.fln.vendas.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
