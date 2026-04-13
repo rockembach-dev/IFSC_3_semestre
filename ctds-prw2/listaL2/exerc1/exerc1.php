@@ -8,61 +8,76 @@
 </head>
 
 <body>
- <h1> PHP + SQL - exercício 1 </h1>
+ <h1> PHP + MySQL - exercício 1 </h1>
 
-  <form action="exerc1.php" method="post">
-    <fieldset>
-      <legend> Dados Cadastrais do aluno </legend>
-      
-      <label> Aluno: </label> <br>
-      <input type="text" name="aluno" placeholder="Informe o Nome do Aluno" autofocus> <br> <br>
+ <form action="exerc1.php" method="post">
+  <fieldset>
+   <legend> Dados cadastrais do aluno </legend>
 
-      <label> Matrícula: </label> <br>
-      <input type="text" name="matricula" placeholder="Informe a matrícula do Aluno"> <br> <br>
+   <label> Aluno: </label> <br>
+   <input type="text" name="aluno" autofocus> <br> <br>
 
-      <label> Média final de PWRII: </label> <br>
-      <input type="number" name="media" placeholder="Informe a média final do aluno" min="0" max="10" step="0.1"> <br> <br>
+   <label> Matrícula: </label> <br>
+   <input type="text" name="matric"> <br> <br>
 
-      <div>
-       <button name="cadastrar"> Cadastrar Aluno </button>
-       <button name="tabular"> Mostrar Dados </button>
-       <button name="contar"> Mostrar Aprovados </button>
-      </div>
-    </fieldset>
-  </form>
-   <?php
-   //vamos incluir os arquivos contendo as includes com a definição de classes
-   require "criar-banco.inc.php";
-   require "alunos.inc.php";
+   <label> Média final de PRWII: </label> <br>
+   <input type="number" name="media" min="0" max="10" step="0.1"> <br> <br>
 
-   //Vamos usar o método construtor para criar um objeto banco
-   $objBanco = new BancoDeDados("localhost", "root", "", "CTDS", "alunos");
+   <div>
+    <button name="cadastrar"> Cadastrar aluno </button>
+    <button name="tabular"> Mostrar dados dos alunos cadastrados </button>
+    <button name="contar"> Mostrar número de alunos aprovados </button>
+   </div>
+  </fieldset>
+ </form> 
+ <?php
+  //vamos incluir os arquivos contendo as includes com a definição de classes
+  require "criar-classe-banco-de-dados.inc.php";
+  require "criar-classe-alunos.inc.php";
 
-   //visualizando o conteúdo de $objBanco
-   //var_dump($objBanco);
-   $conexao = $objBanco->criarConexao();
+  //vamos usar o método construtor para criar um objeto banco
+  $objBanco = new BancoDeDados("localhost", "root", "", "CTDS", "alunos");
+  //visualizando o conteúdo de $objBanco
 
-   $objBanco->criarBanco($conexao);
+  //var_dump($objBanco);
 
-   $objBanco->abrirBanco($conexao);
+  $conexao = $objBanco->criarConexao();
 
-   $objBanco->definirCharset($conexao);
+  //criar o banco de dados CTDS
+  $objBanco->criarBanco($conexao);
 
-   //Vamos fazer o PHP descobrir qual botão do formulário foi clicado
-    if(isset($_POST["cadastrar"]))
-     {
+  //abrindo o banco de dados criado no servidor
+  $objBanco->abrirBanco($conexao);
 
-     }
+  //definindo a tabela UTF8 como tabela de símbolos-padrão do MySQL
+  $objBanco->definirCharset($conexao);
 
-     if(isset($_POST["tabular"]))
-      {
+  //criando a tabela na base de dados
+  $objBanco->criarTabela($conexao); 
 
-      }
+  //vamos criar o objeto aluno, a partir do construtor padrão da classe Alunos
+  $objAluno = new Alunos();  
 
-      if(isset($_POST["contar"]))
-       {
+  //vamos fazer o PHP descobrir qual botão do formulário foi clicado
+  if(isset($_POST["cadastrar"]))
+   {
+   $objAluno->receberDadosForm($conexao);
+   $objAluno->cadastrar($conexao, $objBanco->nomeDaTabela);
+   echo "<p> Dados do aluno cadastrados com sucesso na base de dados. </p>";
+   }
 
-       }
-   ?>
+  if(isset($_POST["tabular"]))
+   {
+   $objAluno->tabularDados($conexao, $objBanco->nomeDaTabela);
+   }
+
+  if(isset($_POST["contar"]))
+   {
+   $objAluno->contarAprovados($conexao, $objBanco->nomeDaTabela);
+   } 
+   
+  //encerrar a conexão do PHP com o MySQL
+  $objBanco->desconectar($conexao);
+ ?>
 </body>
 </html>
