@@ -72,13 +72,27 @@
   //Mostrando a Descrição do produto com a menor quantidade em estoque 
   function descMenorQtd($conexao, $nomeDaTabela) 
    {
-   $sql = "SELECT descricao FROM $nomeDaTabela WHERE estoque > ";
+   $sql = "SELECT descricao FROM $nomeDaTabela WHERE estoque = (SELECT MIN(estoque) FROM $nomeDaTabela)";
    $resultado = $conexao->query($sql) or die($conexao->error);
-
    $vetorRegistro = $resultado->fetch_array();
 
-   $numeroAlunosAprovados = htmlentities($vetorRegistro[0], ENT_QUOTES, "UTF-8");
+   echo "<p> Descrição do produto com menor estoque: " . htmlentities($vetorRegistro[0], ENT_QUOTES, 'UTF-8') . "</p>";
+   }
 
-   echo "<p> Número de alunos aprovados em PRWII e registrados no banco de dados = <span> $numeroAlunosAprovados </span> aluno(s) </p>";
+   function faturamentoTotalNaoPereciveis($conexao, $nomeDaTabela)
+   {
+       $sql = "SELECT SUM(preco * estoque) FROM $nomeDaTabela WHERE classificacao = 'naoPerecivel'";
+       $resultado = $conexao->query($sql) or die($conexao->error);
+       $vetorRegistro = $resultado->fetch_array();
+       echo "<p> Faturamento total dos produtos não perecíveis: R$" . htmlentities($vetorRegistro[0], ENT_QUOTES, 'UTF-8') . "</p>";
+   }
+
+   function totalItensEstoque($conexao, $nomeDaTabela)
+   {
+       $sql = "SELECT SUM(estoque) FROM $nomeDaTabela";
+       $resultado = $conexao->query($sql) or die ($conexao->error);
+       $vetorRegistro = $resultado->fetch_array();
+       echo "<p> Total de itens: " . htmlentities($vetorRegistro[0], ENT_QUOTES, 'UTF-8') . "</p>";
+
    }
  }

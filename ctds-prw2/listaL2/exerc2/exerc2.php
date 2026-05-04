@@ -33,12 +33,13 @@
    <div>
      <label> Escolha uma das Operações a seguir: </label> <br>
       <select name="operacoes">
-         <option value="1"> Cadastrar produto</option>
-         <option value="2"> Tabular dados dos produtos perecíveis</option>
-         <option value="3"> Mostrar Descrição (menor estoque) </option>
-         <option value="4"> Calcular faturamento (não perecíveis) </option>
+         <option value="cadastrar"> Cadastrar produto</option>
+         <option value="mostrar"> Tabular dados dos produtos perecíveis</option>
+         <option value="descricao"> Mostrar Descrição (menor estoque) </option>
+         <option value="calcular"> Calcular faturamento (não perecíveis) </option>
+         <option value="total"> Mostrar o total de itens no estoque </option>
       </select> <br> <br>
-      <button name="enviarOperacao"> Executar operação</button>
+      <button type="submit" name="enviarOperacao"> Executar operação</button>
    </div>
   </fieldset>
  </form> 
@@ -72,7 +73,7 @@
 
 
   //vamos criar o objeto aluno, a partir do construtor padrão da classe Alunos
-  $objProduto = new Produtos();  
+  $produto = new Produtos();  
 
   //testando se o botão geral de execução de uma operação foi acionado no formulário
   if(isset($_POST['enviarOperacao']))
@@ -80,42 +81,27 @@
     //vamos descobrir qual option do select foi acionado no formulário
     $operacao = $_POST["operacoes"];
     
-    if($operacao == "1")
-     {
-       $objProduto->receberDadosForm($conexao);
-       $objProduto->cadastrar($conexao, $objBanco->nomeDaTabela);
-       echo "<p> Dados do produto cadastrados com sucesso na base de dados. </p>";
-     }
-
-    if($operacao == "2")
-     {
-      $objProduto->tabularDados($conexao, $objBanco->nomeDaTabela);
-     }
-
-    if($operacao == "3")
-     {
-
-     }
-
-    if($operacao == "4")
-     {
-
-     }
     
-   }
-
-  if(isset($_POST["tabular"]))
-   {
-   $objAluno->tabularDados($conexao, $objBanco->nomeDaTabela);
-   }
-
-  if(isset($_POST["contar"]))
-   {
-   $objAluno->contarAprovados($conexao, $objBanco->nomeDaTabela);
-   } 
-   
-  //encerrar a conexão do PHP com o MySQL
-  $objBanco->desconectar($conexao);
+  switch ($operacao) {
+   case 'cadastrar':
+    $produto->receberDadosForm($conexao);
+    $produto->cadastrar($conexao, $objBanco->nomeDaTabela);
+    echo "<p> Produto cadastrado com sucesso! </p>";
+    break;
+   case 'mostrar':
+    $produto->tabularDados($conexao,  $objBanco->nomeDaTabela);
+    break;
+   case 'descricao':
+    $produto->descMenorQtd($conexao,  $objBanco->nomeDaTabela);
+    break;
+   case 'calcular':
+    $produto->faturamentoTotalNaoPereciveis($conexao,  $objBanco->nomeDaTabela);
+    break;
+   case 'total':
+     $produto->totalItensEstoque($conexao,  $objBanco->nomeDaTabela);
+     break;
+  }
+ }
  ?>
 </body>
 </html>
