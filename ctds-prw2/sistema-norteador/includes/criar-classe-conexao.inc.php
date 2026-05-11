@@ -45,7 +45,7 @@
 
   function criarTabelaClientes($conexao)
    {
-   $sql = "CREATE TABLE IF NOT $this->nomeDaTabelaClientes (
+   $sql = "CREATE TABLE IF NOT EXISTS $this->nomeDaTabelaClientes (
              ID INT PRIMARY KEY AUTO_INCREMENT,
              nome VARCHAR(300),
              endereco VARCHAR(300),
@@ -55,6 +55,17 @@
              senha VARCHAR(128)) ENGINE=innoDB;";
 
    $conexao->query($sql) OR die($conexao->error);
+   }
+
+   function criarTabelaVeiculos($conexao)
+   {
+    $sql = "CREATE TABLE IF NOT EXISTS $this->nomeDaTabelaVeiculos (
+             ID INT PRIMARY KEY AUTO_INCREMENT,
+             fabricante VARCHAR(300),
+             modelo VARCHAR(300),
+             placa VARCHAR(100)) ENGINE=InnoDB;";
+
+   $conexao->query($sql) OR die($conexao->error);          
    }
 
  
