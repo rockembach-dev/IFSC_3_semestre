@@ -1,34 +1,26 @@
-let telaAnterior = "tela-home";
-let telaAtual = "tela-home";
+    let telaAnterior = 'tela-home'
+    let telaAtual = 'tela-home'
 
-function navegar(destino) {
-  let telas = document.getElementsByClassName("tela");
-  Array.from(telas).forEach((element) => {
-    element.classList.remove("show");
-    element.classList.add("collapse");
-  });
-  document.getElementById(destino).classList.remove("collapse");
-  document.getElementById(destino).classList.add("show");
-  telaAnterior = telaAtual;
-  telaAtual = destino;
-}
+   function navegar(destino){
+       let telas = document.getElementsByClassName('tela')
+       Array.from(telas).forEach(element => {
+           element.classList.remove('show')
+           element.classList.add('collapse')
+       });
+       document.getElementById(destino).classList.remove('collapse')
+       document.getElementById(destino).classList.add('show')
+       telaAnterior = telaAtual
+       telaAtual = destino
+    }
 
-function voltar() {
-  navegar(telaAnterior);
-}
+    function voltar() {
+        navegar(telaAnterior)
+    }
 
-function mostrarDetalhes(
-  produto,
-  imagem,
-  categoria,
-  preco,
-  descricao,
-  nota,
-  avaliacoes,
-) {
-  navegar("tela-produto");
-  let detalhes = document.getElementById("detalhes-produto");
-  detalhes.innerHTML = `
+   function mostrarDetalhes(produto, imagem, categoria, preco, descricao, nota, avaliacoes){
+        navegar('tela-produto')
+        let detalhes = document.getElementById('detalhes-produto')
+        detalhes.innerHTML =`
             <div class="row g-3">
                 <div class="col-md-4 text-center">
                 <img src="${imagem}" class="img-fluid" alt="${produto}">
@@ -41,33 +33,39 @@ function mostrarDetalhes(
                 <p><strong>Avaliação:</strong> ${nota} ⭐ (${avaliacoes} avaliações)</p>
                 </div>
             </div>
-        `;
-}
+        `
+   }
 
-// Função que carrega produtos baseado em uma categoria escolhida
+   // Função que carrega produtos baseado em uma categoria escolhida
 async function carregarPorCategoria(categoria) {
-  try {
-    let url;
-    const telaLista = document.getElementById("tela-home");
 
-    // Define URLs conforme categoria selecionada
-    if (categoria === "todos") {
-      url = "https://fakestoreapi.com/products";
-    } else {
-      url = `https://fakestoreapi.com/products/category/${categoria}`;
-    }
 
-    // Faz requisições
-    const response = await axios.get(url);
+   try {
+       let url;
+       const telaLista = document.getElementById("tela-home");
 
-    const produtos = response.data;
 
-    // Renderiza os produtos na tela principal
-    telaLista.innerHTML = "";
-    produtos.forEach((produto) => {
-      const card = document.createElement("div");
-      card.className = "col";
-      card.innerHTML = `
+       // Define URLs conforme categoria selecionada
+       if (categoria === 'todos') {
+           url = 'https://fakestoreapi.com/products';
+       } else {
+           url = `https://fakestoreapi.com/products/category/${categoria}`;
+       }
+
+
+       // Faz requisições 
+       const response = await axios.get(url);
+
+
+       const produtos = response.data;
+
+
+       // Renderiza os produtos na tela principal
+       telaLista.innerHTML = "";
+       produtos.forEach(produto => {
+           const card = document.createElement("div");
+           card.className = "col";
+           card.innerHTML = `
                <div class="card h-100" onclick="abrirDetalhes(${produto.id})">
                <img src="${produto.image.replace(".jpg", "t.png")}" class="card-img-top p-3" style="height:250px; object-fit:contain;">
                <div class="card-body">
@@ -76,27 +74,31 @@ async function carregarPorCategoria(categoria) {
                </div>
                </div>
            `;
-      telaLista.appendChild(card);
-    });
+           telaLista.appendChild(card);
+       });
 
-    navegar("tela-home");
-  } catch (error) {
-    console.error("Erro ao carregar produtos:", error);
-  }
+
+       navegar('tela-home')
+   } catch (error) {
+       console.error("Erro ao carregar produtos:", error);
+   }
 }
-carregarPorCategoria("todos");
+carregarPorCategoria('todos')
 
 // Função que carrega detalhes específicos de um produto
 async function abrirDetalhes(id) {
   try {
-    const detalhesProduto = document.getElementById("detalhes-produto");
+      const detalhesProduto = document.getElementById("detalhes-produto");
+     
+      navegar('tela-produto')
+      detalhesProduto.innerHTML = "Carregando..."
+      const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
+      const p = response.data;
 
-    navegar("tela-produto");
-    detalhesProduto.innerHTML = "Carregando...";
-    const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-    const p = response.data;
 
-    detalhesProduto.innerHTML = `
+
+
+      detalhesProduto.innerHTML = `
       <div class="row g-3">
           <div class="col-md-4 text-center">
           <img src="${p.image}" class="img-fluid" alt="${p.title}">
@@ -108,24 +110,27 @@ async function abrirDetalhes(id) {
           <p><strong>Descrição:</strong> ${p.description}</p>
           <p><strong>Avaliação:</strong> ${p.rating.rate} ⭐ (${p.rating.count} avaliações)</p>
           </div>
-      </div>`;
+      </div>`
+
+
+     
   } catch (error) {
-    console.error("Erro ao carregar detalhes:", error);
+      console.error("Erro ao carregar detalhes:", error)
   }
 }
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js");
+if ('serviceWorker' in navigator) {  
+    navigator.serviceWorker.register("./service-worker.js");
 }
 
 var pedidoInstalacao;
-window.addEventListener("beforeinstallprompt", function (installPrompt) {
-  if (installPrompt) {
-    document.getElementById("installAppBt").classList.add("show");
-    pedidoInstalacao = installPrompt;
-  }
+window.addEventListener('beforeinstallprompt', function(installPrompt) {
+    if(installPrompt){
+        document.getElementById("installAppBt").classList.add('show')
+        pedidoInstalacao = installPrompt
+    }
 });
 
 function installApp() {
-  pedidoInstalacao.prompt();
+    pedidoInstalacao.prompt(); 
 }
