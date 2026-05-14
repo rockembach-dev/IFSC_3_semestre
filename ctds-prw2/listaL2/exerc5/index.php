@@ -20,15 +20,20 @@
        <label> Preço: </label>
        <input type="number" name="preco">
        <label> Data de Lançamento: </label>
-       <input type="date" name="dataLanc">
+       <input type="date" name="data-lancamento"> <br> <br>
+
+
+         <label> Forneça o isbn de um livro para ser excluido </label>
+        <input type="text" name="deletar-livro">
      </fieldset>
 
      <div>
        <label> Selecione uma operação </label>
-       <input type="radio" name="operacao" value="alteracao"> <label> Alteração da data de lançamento </label> <br>
-       <input type="radio" name="operacao" value="exclusao"> <label> Excluir obras lançadas há mais de 2 anos </label> <br>
+       <input type="radio" name="operacao" value="alterar"> <label> Alteração da data de lançamento </label> <br>
+       <input type="radio" name="operacao" value="excluir"> <label> Excluir obras lançadas há mais de 2 anos </label> <br>
        <input type="radio" name="operacao" value="listar"> <label> Listar dados de todos livros </label><br>
-       <button> Execultar operação </button>
+       <input type="radio" name="operacao" value="cadastrar"> <label> Cadastrar livro </label><br>
+       <button type="submit" name="enviar"> Enviar operação </button> <br> <br>
      </div>
    </form>
 
@@ -37,6 +42,43 @@
   require "livros.inc.php";
   
   $objBanco = new BancodeDados("localhost", "root", "", "CTDS", "livros");
-   
+
+  $conexao = $objBanco->criarConexao();
+
+  $objBanco->criarBanco($conexao);
+
+  $objBanco->abrirBanco($conexao);
+
+  $objBanco->definirCharset($conexao);
+
+  $objBanco->criarTabela($conexao);
+
+  $objLivro = new Livros();
+
+  
+   if(isset($_POST["operacao"]))
+    { 
+      if($_POST["operacao"]== "cadastrar")
+        {
+        $objLivro->recebeDadosForm($conexao);
+        $objLivro->cadastrar($conexao, $objBanco->nomeDaTabela);
+        echo "<p> Dados dos livros cadastrados </p>";
+        }
+      if($_POST["operacao"] == "listar")
+        {
+          $objLivro->tabularLivros($conexao, $objBanco->nomeDaTabela);
+        } 
+      if($_POST["operacao"] == "excluir")
+        {
+          $objLivro->excluirAntigas($conexao, $objBanco->nomeDaTabela);
+        }   
+      if($_POST["operacao"] == "alterar")
+        {
+          $objLivro->alterarData($conexao, $objBanco->nomeDaTabela);
+        }
+    } 
+
+   $objBanco->desconectar($conexao);
+?>    
 </body>
 </html>

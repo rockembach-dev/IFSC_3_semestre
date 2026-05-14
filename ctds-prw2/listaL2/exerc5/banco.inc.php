@@ -19,6 +19,40 @@
 
    function criarConexao()
    {
-    $conexao = new mysqli($this->servidor, $this->usuarip,$this->senha) OR die($conexao->error)
+    $conexao = new mysqli($this->servidor, $this->usuario,$this->senha) OR die($conexao->error);
+    return $conexao;
+   }
+
+   function criarBanco($conexao)
+   {
+    $sql = "CREATE DATABASE IF NOT EXISTS $this->nomeDoBanco";
+    $conexao->query($sql) or die ($conexao->error);
+   }
+
+   function abrirBanco($conexao)
+   {
+    $conexao->select_db($this->nomeDoBanco);
+   }
+
+   function definirCharset($conexao)
+   {
+    $conexao->set_charset("utf8");
+   }
+
+   function criarTabela($conexao)
+   {
+    $sql = "CREATE TABLE IF NOT EXISTS $this->nomeDaTabela (
+              isbn VARCHAR(50) PRIMARY KEY,
+              titulo VARCHAR(200),
+              autor VARCHAR(400),
+              preco INT,
+              data_lancamento DATE)ENGINE = InnoDB;";
+
+    $conexao->query($sql) or die ($conexao->error);          
+   }
+
+   function desconectar($conexao)
+   {
+    $conexao->close();
    }
   }
