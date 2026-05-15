@@ -1,0 +1,234 @@
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f3f5f9;
+      display:flex;
+      flex-wrap:wrap;
+      gap:30px;
+      padding:40px;
+      justify-content:center;
+    }
+
+    .phone{
+      width:320px;
+      height:690px;
+      background:#fff;
+      border-radius:35px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      position:relative;
+    }
+
+    .header-dark{
+      background:#032B5B;
+      color:white;
+      padding:30px 25px;
+    }
+
+    .logo-screen{
+      background:linear-gradient(180deg,#022248,#031d3f);
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100%;
+      text-align:center;
+      padding:30px;
+    }
+
+    .logo-car{
+      font-size:70px;
+      margin-bottom:20px;
+      &#1F698
+    }
+
+    .logo-screen h1{
+      font-size:48px;
+      font-weight:700;
+    }
+
+    .logo-screen span{
+      color:#FFD000;
+    }
+
+    .logo-screen p{
+      margin-top:10px;
+      opacity:0.8;
+    }
+
+    .btn{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      font-weight:600;
+      cursor:pointer;
+      margin-top:15px;
+      font-size:15px;
+
+    }
+
+    .btn-yellow{
+      background:#FFD000;
+      color:#032B5B;
+      }
+
+    a{text-decoration: none;}
+     
+    .btn-outline{
+      border:2px solid white;
+      background:transparent;
+      color:white;
+    }
+
+    .content{
+      padding:25px;
+    }
+
+    .title{
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      color:#666;
+      margin-bottom:25px;
+      font-size:14px;
+    }
+
+    .input{
+      width:100%;
+      padding:15px;
+      border-radius:14px;
+      border:1px solid #dfe4ea;
+      margin-bottom:15px;
+      font-size:14px;
+    }
+
+    .service-card{
+      background:#fff;
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      margin-bottom:15px;
+      border:1px solid #eef1f4;
+    }
+
+    .service-card h3{
+      font-size:18px;
+      margin-bottom:8px;
+      color:#032B5B;
+    }
+
+    .price{
+      color:#0c8a43;
+      font-weight:700;
+      margin-top:10px;
+    }
+     .btn-agenda{
+      background:#fff;
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      margin-bottom:25px;
+      border:1px solid #eef1f4;
+      margin-top:50px;
+      margin-left:40px;
+
+     }
+
+      .top-home{
+      background:#032B5B;
+      color:white;
+      padding:25px;
+      border-bottom-left-radius:50px;
+      border-bottom-right-radius:30px;
+    }
+
+    .vehicle-box{
+      background:white;
+      color:#222;
+      padding:15px;
+      border-radius:18px;
+      margin-top:20px;
+    }
+
+    .services-grid{
+      padding:20px;
+    }
+
+    .mini-card{
+      background:white;
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom:15px;
+      border:1px solid #edf0f4;
+    }
+
+    .mini-card h4{
+      color:#032B5B;
+      margin-bottom:5px;
+    }
+
+    .bottom-nav{
+      position:absolute;
+      bottom:0;
+      width:100%;
+      height:70px;
+      background:white;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      border-top:1px solid #e9edf3;
+    }
+
+    .nav-item{
+      text-align:center;
+      font-size:12px;
+      color:#777;
+    }
+
+    .nav-item.active{
+      color:#032B5B;
+      font-weight:600;
+    }
+
+    .confirmation{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      height:100%;
+      text-align:center;
+      padding:30px;
+    }
+
+    .check{
+      width:90px;
+      height:90px;
+      background:#24b25f;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:40px;
+      margin-bottom:25px;
+    }
+
+    .profile-item{
+      padding:18px 0;
+      border-bottom:1px solid #edf1f4;
+      display:flex;
+      justify-content:space-between;
+      color:#333;
+      font-size:15px;
+    }
