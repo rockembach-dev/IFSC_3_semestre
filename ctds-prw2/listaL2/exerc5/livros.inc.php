@@ -9,11 +9,12 @@
 
   function recebeDadosForm($conexao)
   {
-   $this->isbn       = trim($conexao->escape_string($_POST["isbn"]));
-   $this->titulo     = trim($conexao->escape_string($_POST["titulo"]));
-   $this->autor = trim($conexao->escape_string($_POST["autor"]));
-   $this->preco = trim($conexao->escape_string($_POST["preco"]));
-   $this->data_lancamento = trim($conexao->escape_string($_POST["data-lancamento"]));
+   $this->isbn             = trim($conexao->escape_string($_POST["isbn"]));
+   $this->titulo           = trim($conexao->escape_string($_POST["titulo"]));
+   $this->autor            = trim($conexao->escape_string($_POST["autor"]));
+   $this->preco            = str_replace(",", ".", $_POST["preco"]);
+   $this->preco            = trim($conexao->escape_string($_POST["preco"]));
+   $this->data_lancamento  = trim($conexao->escape_string($_POST["data-lancamento"]));
   }
 
   function cadastrar($conexao, $nomeDaTabela)
@@ -33,7 +34,7 @@
    $isbnPesquisado = trim($conexao->escape_string($_POST['isbn-pesquisado']));
    $dataAlterada = trim($conexao->escape_string($_POST['data-alterada']));
 
-   $sql = "UPDATE $nomeDaTabela SET data_lancamento = $dataAlterada WHERE isbn = $isbnPesquisado;";
+   $sql = "UPDATE $nomeDaTabela SET data_lancamento = '$dataAlterada' WHERE isbn = '$isbnPesquisado';";
    $conexao->query($sql) or die($conexao->error);
 
    if($conexao->affected_rows > 0 ){
@@ -46,9 +47,9 @@
 
   function excluirAntigas($conexao, $nomeDaTabela)
   {
-   $livroDeletado = trim($conexao->escape_string($_POST["deletar-livro"]));
+   $livroDeletado = trim($conexao->escape_string($_POST["isbn-pesquisado"]));
 
-   $sql = "DELETE FROM Livros WHERE data_lancamento < '2024-01-01'";
+   $sql = "DELETE FROM $nomeDaTabela WHERE isbn = '$livroDeletado' AND data_lancamento < '2024-01-01'";
    $conexao->query($sql) or die ($conexao->error);
 
    if($conexao->affected_rows == 0)
@@ -56,13 +57,13 @@
      die("<p> O livro em questão não pode ser excluido pois foi lançado depois do ano de 2024, Por Favor tente novamento com outro livro </p>");
     }
      else{
-       echo "<p> O livro: $livroDeletado tem mais de 2 anos de lançamento e foi deletado";
+       echo "<p> O livro de isbn: $livroDeletado tem mais de 2 anos de lançamento e foi deletado";
      }
   }
 
   function tabularLivros($conexao, $nomeDaTabela)
   {
-   echo "<table> 
+   echo "<table class='w3-table-all w3-hoverable w3-card-4'>
            <caption> Livros Cadastrados </caption> 
            <tr> 
              <th> ISBN </th>

@@ -45,7 +45,7 @@
               isbn VARCHAR(50) PRIMARY KEY,
               titulo VARCHAR(200),
               autor VARCHAR(400),
-              preco INT,
+              preco DECIMAL(10,2),
               data_lancamento DATE)ENGINE = InnoDB;";
 
     $conexao->query($sql) or die ($conexao->error);          
