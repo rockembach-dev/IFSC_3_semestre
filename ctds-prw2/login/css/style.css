@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+body {
+ font-family: 'Instrument Serif';
+ text-align: center;
+ font-size: 1.5em;
+}
+
+span {
+ font-weight: bold;
+ color: red;
+ font-style: italic;
+}
+
+/* Tirando o sublinhado da tag a*/
+a {
+ text-decoration: none;
+ color: black;
+ font-weight: bolder;
+ font-style: italic;
+}
+
+a:hover {
+ color: #8D7B68;
+}
+
+/* Colocando linhas na tabela e centralizando o texto*/
+table,
+th,
+td {
+ border: 1px solid #C8B6A6;
+ border-collapse: collapse;
+ text-align: center;
+ background-color: #A4907C;
+ color: #fff;
+ box-shadow: 5px 5px 3px #8D7B68;
+ margin: auto;
+}
+
+h1 {
+ text-align: center;
+ margin: 0;
+ border-bottom: 1% solid black;
+ background-color: #A4907C;
+ color: #fff;
+ padding: 20px 0;
+ box-shadow: 5px 5px 3px #8D7B68;
+}
+
+p {
+ text-align: center;
+ border: 1px solid black;
+ margin: 30px auto;
+ width: 75%;
+ border-radius: 15px;
+ background-color: #A4907C;
+ color: #fff;
+ box-shadow: 5px 5px 3px #8D7B68;
+}
+
+/* Estilizando o botão */
+button {
+ display: inline-block;
+ height: 40px;
+ font-weight: bold;
+ font-size: 18px;
+ font-family: 'Instrument Serif';
+ margin: auto;
+ background-color: #A4907C;
+ color: #fff;
+ border: 1px solid black;
+ border-radius: 5px;
+ box-shadow: 3px 3px 3px #8D7B68;
+ cursor: pointer;
+ text-shadow: 1px 1px 2px gainsboro;
+ width: 25%;
+}
+
+button:hover {
+ background-color: #8D7B68;
+ color: black;
+}
+
+fieldset {
+ border-radius: 20px;
+ background-color: #A4907C;
+ width: 75%;
+ margin: 5% auto;
+ padding: 3%;
+ box-shadow: 5px 5px 3px #8D7B68;
+ border: 1px solid black;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+ margin-bottom: 5%;
+ padding: 5px;
+ border: 1px solid black;
+ border-radius: 5px;
+ box-shadow: 2px 2px 2px black;
+ width: 30%;
+}
+
+legend {
+ background-color: black;
+ border-radius: 20px;
+ color: white;
+}
+
+textarea {
+ width: 50%;
+ height: 100px;
+ border: 1px solid black;
+ border-radius: 5px;
+ box-shadow: 2px 2px 2px black;
+ padding: 10px;
+ margin-bottom: 5%;
+ /*Colocando o label ao lado do textarea*/
+ display: block;
+ margin: 0 auto;
+ resize: none; /* Impede o redimensionamento do textarea */
+ font-size: 1em;
+}
+
+select {
+ padding: 5px;
+ border: 1px solid black;
+ border-radius: 5px;
+ box-shadow: 2px 2px 2px black;
+ width: 30%;
+ margin-bottom: 5%;
+}
+
+caption{
+ color: black;
+}
+
+label.alinha {
+ display: inline-block;
+ width: 252px;
+ text-align: right;
+ margin-bottom: 15px;
+}

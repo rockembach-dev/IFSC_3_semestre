@@ -64,7 +64,7 @@
   function tabularLivros($conexao, $nomeDaTabela)
   {
    echo "<table class='w3-table-all w3-hoverable w3-card-4'>
-           <caption> Livros Cadastrados </caption> 
+           <caption class='w3-text-blue w3-large'> Livros Cadastrados </caption> 
            <tr> 
              <th> ISBN </th>
              <th> Título </th> 
