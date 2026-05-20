@@ -9,10 +9,10 @@
   
   function recebeDadosForm($conexao)
   {
-   $this->nome = trim($conexao->escape_string($_POST['nome']));
-   $this->orcamento  = trim($conexao->escape_string($_POST['orcamento']));
-   $this->data_inicio  = trim($conexao->escape_string($_POST['data-inicio']));
-   $this->horas  = trim($conexao->escape_string($_POST['horas']));
+   $this->nome            = trim($conexao->escape_string($_POST['nome']));
+   $this->orcamento       = trim($conexao->escape_string($_POST['orcamento']));
+   $this->data_inicio     = trim($conexao->escape_string($_POST['data-inicio']));
+   $this->horas           = trim($conexao->escape_string($_POST['horas']));
   }
 
   function cadastrar($conexao, $nomeDaTabela)
@@ -44,10 +44,10 @@
 
     while($vetorRegistro = $resultado->fetch_array())
     {
-     $nome            =htmlentities($vetorRegistro[0], ENT_QUOTES, "UTF-8");
-     $id               = htmlentities($vetorRegistro[1], ENT_QUOTES, "UTF-8");
+     $nome                = htmlentities($vetorRegistro[0], ENT_QUOTES, "UTF-8");
+     $id                  = htmlentities($vetorRegistro[1], ENT_QUOTES, "UTF-8");
      $orcamento           = htmlentities($vetorRegistro[2], ENT_QUOTES, "UTF-8");
-     $data_inicio      = date('d/m/Y', strtotime($vetorRegistro[3]));
+     $data_inicio         = date('d/m/Y', strtotime($vetorRegistro[3]));
 
      echo "<tr> 
              <td> $nome </td>
@@ -57,6 +57,41 @@
            </tr>";
     }
     echo "</table>";
+  }
+
+  function listarTudo($conexao, $nomeDaTabela)
+  {
+    echo "<table class='w3-table-all w3-hoverable w3-card-4'>
+           <caption class='w3-text-blue w3-large'> Projetos Cadastrados </caption> 
+           <tr> 
+             <th> ID </th>
+             <th> Projeto </th>
+             <th> Orçamento </th> 
+             <th> Data de Início </th>
+             <th> Horas para Execução </th>
+           </tr>";
+
+    $sql = "SELECT * FROM $nomeDaTabela";
+
+    $resultado = $conexao->query($sql) or die ($conexao->error);
+
+    while($vetorRegistro = $resultado->fetch_array())
+      {
+        $id                  = htmlentities($vetorRegistro[0], ENT_QUOTES, "UTF-8");
+        $nome                = htmlentities($vetorRegistro[1], ENT_QUOTES, "UTF-8");
+        $orcamento           = htmlentities($vetorRegistro[2], ENT_QUOTES, "UTF-8");
+        $data_inicio         = date('d/m/Y', strtotime($vetorRegistro[3]));
+        $horas               = htmlentities($vetorRegistro[4], ENT_QUOTES, "UTF-8");
+
+        echo "<tr> 
+               <td> $id </td> 
+               <td> $nome </td>
+               <td> R$$orcamento </td>
+               <td> $data_inicio </td>
+               <td> {$horas}h </td>  
+             </tr>";
+      }
+
   }
 
   function numerosProjetos($conexao, $nomeDaTabela)

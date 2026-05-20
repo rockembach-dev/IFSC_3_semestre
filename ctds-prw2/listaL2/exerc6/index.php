@@ -38,6 +38,7 @@
       
       <fieldset>
          <input type="radio" name="operacao" value="cadastrar" class="w3-radio"><label> Cadastrar informações </label> <br> <br>
+         <input type="radio" name="operacao" value="listarTudo" class="w3-radio"> <label> Listar Todas as Informações </label>
          <input type="radio" name="operacao" value="listar" class="w3-radio"><label> Listar ID e orçamento </label> <br> <br>
          <input type="radio" name="operacao" value="mostrar" class="w3-radio"><label> Projetos com ínicio posterior a 01/01/2020 </label> <br> <br>
          <input type="radio" name="operacao" value="excluir" class="w3-radio"><label> Excluir registror (menor que 100horas e orçamento inferior a R$1000,00) </label> <br> <br>
@@ -73,6 +74,10 @@
      $objProjetos->recebeDadosForm($conexao);
      $objProjetos->cadastrar($conexao, $objBanco->nomeDaTabela);
     echo "<p> Projeto Cadastrado com sucesso!!";
+    }
+   if($_POST["operacao"] == "listarTudo")
+    {
+    $objProjetos->listarTudo($conexao, $objBanco->nomeDaTabela);
     }
    if($_POST["operacao"] == "listar")
     {
