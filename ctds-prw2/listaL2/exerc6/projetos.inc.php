@@ -35,7 +35,6 @@
              <th> Projeto </th>
              <th> ID </th>
              <th> Orçamento </th> 
-             <th> Data de Início </th>
            </tr>";
 
    $sql = "SELECT nome,id, orcamento, data_inicio FROM $nomeDaTabela ";
@@ -47,13 +46,10 @@
      $nome                = htmlentities($vetorRegistro[0], ENT_QUOTES, "UTF-8");
      $id                  = htmlentities($vetorRegistro[1], ENT_QUOTES, "UTF-8");
      $orcamento           = htmlentities($vetorRegistro[2], ENT_QUOTES, "UTF-8");
-     $data_inicio         = date('d/m/Y', strtotime($vetorRegistro[3]));
-
      echo "<tr> 
              <td> $nome </td>
              <td> $id </td> 
              <td> R$$orcamento </td>
-             <td> $data_inicio </td>
            </tr>";
     }
     echo "</table>";
