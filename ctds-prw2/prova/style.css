@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body {
+ font-family: Oswald;
+ margin: 0;
+ background: #EAF3FB;
+}
+
+h1 {
+ margin: 0;
+ text-align: center;
+ border-bottom: 1px solid #185FA5;
+ background: #185FA5;
+ margin-bottom: 30px;
+ color: #fff;
+ box-shadow: 0 0 5px 5px #0C447C;
+}
+
+fieldset {
+ border-radius: 20px;
+ background: rgba(181, 212, 244, 0.3);
+ width: 40%;
+ margin: 30px auto;
+ padding-left: 40px;
+ box-shadow: 5px 5px 5px #85B7EB;
+ border: 1px solid #85B7EB;
+}
+
+legend {
+ color: #0C447C;
+ font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+ margin-bottom: 10px;
+ border: 1px solid #85B7EB;
+ border-radius: 6px;
+ padding: 4px 8px;
+ background: #fff;
+ color: #042C53;
+}
+
+input[name*="nome"], input[name="autor"] {
+ width: 350px;
+}
+
+input[name="media"], input[name="matric"], input[name="perc-desc"] {
+ width: 100px;
+}
+
+button {
+ height: 40px;
+ font-weight: bold;
+ font-size: 18px;
+ font-family: Oswald;
+ width: 350px;
+ margin-top: 25px;
+ background: #185FA5;
+ color: #fff;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ transition: background 0.2s;
+}
+
+button:hover {
+ background: #0C447C;
+}
+
+p {
+ border: 1px solid #185FA5;
+ background: #EAF3FB;
+ margin: 30px auto;
+ border-radius: 15px;
+ text-align: center;
+ width: 40%;
+ border-radius: 15px;
+ padding: 10px;
+ color: #042C53;
+}
+
+span {
+ color: #185FA5;
+ font-weight: bold;
+ font-style: italic;
+}
+
+table {
+ width: 50%;
+ border: 1px solid #185FA5;
+ margin: 30px auto;
+ box-shadow: 5px 5px 5px #378ADD;
+ background: #185FA5;
+}
+
+th {
+ color: #fff;
+}
+
+td {
+ background: rgba(181, 212, 244, 0.3);
+ text-align: center;
+ color: #042C53;
+}
+
+textarea {
+ width: 30%;
+ height: 200px;
+ font-family: Oswald;
+ resize: none;
+ border: 1px solid #85B7EB;
+ border-radius: 6px;
+ padding: 6px 8px;
+ background: #fff;
+ color: #042C53;
+}
+
+div {
+ width: 350px;
+ margin: 20px auto;
+}
