@@ -32,5 +32,40 @@
             '$this->senha')";
 
    $conexao->query($sql) or die($conexao->error);
+   session_start();
+   $_SESSION["conectado"] = true;
    }
+
+  function logar($conexao, $nomeDaTabela)
+  {
+   $usuario = trim($conexao->escape_string($_POST["login"])); 
+   $senha = trim($conexao->escape_string($_POST["senha"])); 
+
+   $senhaCriptografada = password_hash($senha, PASSWORD_ARGON2I);
+
+   $sql = "SELECT senha FROM $nomeDaTabela WHERE usuario='$usuario'";
+   $resultado = $conexao->query($sql) or die ($conexao->error);
+
+   $senhaDoBanco = false;
+
+   if($conexao->affected_rows != 0)
+    {
+      $vetorRegistro = $resultado->fetch_array();
+      $senhaCriptografada = $vetorRegistro[0];
+    
+      $senhaDoBanco = password_verify($senha, $senhaCriptografada);
+    }
+
+    if($senhaDoBanco == true)
+    {
+      session_start();
+      $_SESSION["conectado"] = true;
+
+      header("location: ../php/protegida1.php");
+    }
+    else
+    {
+    echo "<p> Credenciais de autenticação de usuário incorretas. </p>";  
+    }
+  } 
  }

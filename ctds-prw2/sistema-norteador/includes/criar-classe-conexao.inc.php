@@ -73,4 +73,36 @@
    {
    $conexao->close();
    }
+
+   function criarTabelaAdmin($conexao)
+   {
+    $sql = "CREATE TABLE IF NOT EXISTS $this->nomeDaTabelaAdmin(
+            ID INT PRIMARY KEY AUTO_INCREMENT,
+            login_admin VARCHAR(100),
+            senha_admin VARCHAR(128)) ENGINE= InnoDB";
+
+   $conexao->query($sql) OR die ($conexao->error);
+   }
+
+   function testarSessao()
+   {
+    session_start();
+    if(!isset($_SESSION["conectado"]) or $_SESSION["conectado"] != true)
+     {
+      exit("<p> Você não está logado! <a href='../php/login-cliente.php'> Logar </a> </p>");
+     }
+   }
+
+   function logout()
+   {
+    session_start();
+    $_SESSION = [];
+    session_destroy();
+    header("location: ../php/login-cliente.php");
+   }
+
+   function redirecionarPagina($endereco)
+   {
+    header("location: $endereco");
+   }
   }
